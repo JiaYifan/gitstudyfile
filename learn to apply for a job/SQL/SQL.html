@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SQL</title>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<style type="text/css">
+a{display: block; text-align: center;}
+p{line-height:150%; margin:8px 0 5px 0;}/*text-indent:2em;border-style: solid dotted dashed double;*/
+ul{margin:0px;}
+li{margin-bottom: 8px;}
+table{margin-left: 2em;}
+span{cursor:pointer;}
+.top{margin: 5px 0 10px 0;float: left;width: 100%;}
+.menulist{display:none;border-style:dotted dotted dotted dotted; padding:0 0 0 8px; margin: 0 0 15px 0;float: left;min-width:500px;width: 50%;margin-right: 50%;}
+</style>
+<script>
+	$(document).ready(function(){
+		$('.top').children('span').click(function(){
+			var list = $(this).parent().next();
+			var show = list.css('display');
+			list.css('display',show =='block'?'none':'block');
+		})
+	});
+</script>
+</head>
+<body>
+<h1 align="center">SQL</h1>
+<hr />
+<br>
+<div class="top"><span>+ 数据操作语言(DML)and数据定义语言(DDL)</span></div> 
+<div class="menulist" style="display:block;">
+	<p>查询和更新指令构成了 SQL 的 DML 部分：</p>
+	<ul>
+		<li>SELECT - 从数据库表中获取数据</li>
+		<li>UPDATE - 更新数据库表中的数据</li>
+		<li>DELETE - 从数据库表中删除数据</li>
+		<li>INSERT INTO - 向数据库表中插入数据</li>
+	</ul>
+	<p>SQL 中最重要的 DDL 语句:</p>
+	<ul>
+		<li>CREATE DATABASE - 创建新数据库</li>
+		<li>ALTER DATABASE - 修改数据库</li>
+		<li>CREATE TABLE - 创建新表</li>
+		<li>ALTER TABLE - 变更（改变）数据库表</li>
+		<li>DROP TABLE - 删除表</li>
+		<li>CREATE INDEX - 创建索引（搜索键）</li>
+		<li>DROP INDEX - 删除索引</li>
+	</ul>
+</div>
+<div class="top"><span>+ SELECT</span></div> 
+<div class="menulist">
+	<p>SELECT 列名称 FROM 表名称</p>
+	<p>SELECT 列名称,列名称 FROM 表名称</p>
+	<p>SELECT * FROM 表名称</p>
+	<p>SELECT DISTINCT 列名称 FROM 表名称</p>
+	<p>SELECT 列名称 FROM 表名称 WHERE 列 运算符 值
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BETWEEN：在某个范围内;
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIKE：搜索某种模式;</p>
+	<P>结合 AND 和 OR 运算符
+	<br>SELECT * FROM Persons WHERE (FirstName='Thomas' OR FirstName='William')
+	AND LastName='Carter'</p>
+	<p>ORDER BY 和 DESC ASC
+	<br>SELECT Company, OrderNumber FROM Orders ORDER BY Company DESC, OrderNumber ASC
+	</p>
+</div>
+<div class="top"><span>+ INSERT INTO</span></div> 
+<div class="menulist">
+	<p>插入新的行
+	<br>INSERT INTO 表名称 VALUES (值1, 值2,....)
+	<br>在指定的列中插入数据
+	<br>INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+	</p>
+</div>
+<div class="top"><span>+ UPDATE</span></div> 
+<div class="menulist">
+	<p>UPDATE 表名称 SET 列名称1 = 新值 , 列名称2 = 新值 WHERE 列名称 = 某值
+	</p>
+</div>
+<div class="top"><span>+ DELETE</span></div> 
+<div class="menulist">
+	<p>删除某行	
+	<br>DELETE FROM 表名称 WHERE 列名称 = 值
+	<br>删除所有行
+	<br>DELETE FROM table_name 或者 DELETE * FROM table_name
+	</p>
+</div>
+
+</body>
+</html>
