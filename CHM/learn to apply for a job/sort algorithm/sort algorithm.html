@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>排序算法</title>
+<script src="../../js/jquery-1.11.3.min.js"></script>
+<style type="text/css">
+a{display: block; text-align: center;}
+p{line-height:150%; font-family: "Microsoft YaHei";}/*text-indent:2em;border-style: solid dotted dashed double;*/
+ul{margin:0px;}
+li{margin-bottom: 8px;}
+table{margin-left: 2em;}
+h3{cursor:pointer;}
+img{width: 100%;max-width: 850px;}
+.innerimg{max-width: 500px;}
+.top{float: left;width: 100%;}
+.menulist{display:none;border-style:dotted dotted dotted dotted; padding:0 0 0 8px; margin: 0 0 15px 0;float: left;min-width:500px;width: 50%;margin-right: 50%;}
+</style>
+<script>
+	$(document).ready(function(){
+		$('.top').children('h3').click(function(){
+			var list = $(this).parent().next();
+			var show = list.css('display');
+			list.css('display',show =='block'?'none':'block');
+		})
+	});
+</script>
+</head>
+<body>
+<h1 align="center">排序算法</h1>
+<hr/>
+<div align="center"><img src="../img/排序算法.png"></div>
+<p>注：“稳定的”是指若两个数字相同，在排序过后，这两个数字的相对顺序不变</p>
+<h3 align="center">插入排序</h3>
+<hr/>
+<div class="top"><h3>直接插入排序（时间复杂度：O(n^2)。稳定的）</h3></div> 
+<div class="menulist">
+	<p>方法：当插入第i (i >= 1) 个对象时, 前面的V[0], V[1], …, V[i-1]已经排好序。这时, 用V[i]的排序码依次与V[i-1], V[i-2], …的排序码顺序进行比较, 找到插入位置即将V[i]插入, 原来位置上的对象向后顺移。</p>
+	<h4>图解</h4>
+	<div class="innerimg"><img src="../img/直接插入排序.gif"></div>
+	<p>注：为啥要设置哨兵？因为如果第i个元素是最小的，依次比较到V[0]时，因为比V[0]小，则会继续往前找，就越界了。
+	<br>所以设置哨兵的好处：1、暂时存放待插入的元素；2、防止数组下标越界</p>
+</div>
+<div class="top"><h3>希尔排序（时间复杂度：n^1.25 ~ 1.6*n^1.25之间（统计资料）。不稳定的。gap的取值会影响希尔排序的效率。）</h3></div> 
+<div class="menulist">
+	<p>方法： 因为在“直接插入排序”过程中，若元素已经基本有序，那么“直接插入排序”的效率较高。引出了“希尔排序”的基本思想：
+    <br>1. 设待排序的序列有 n 个对象，首先取一个整数 gap < n 作为间隔, 将下标相差为gap的倍数对象放在一组。 
+    <br>2. 在组内作 直接插入排序。 
+    <br>3. 然后逐渐缩小间隔 gap, 例如取 gap = gap/2，重复上述的组划分和排序工作。直到最后取 gap == 1, 将所有对象放在同一个组中进行排序为止。</p>
+	<h4>图解</h4>
+	<div class="innerimg"><img src="../img/希尔排序.gif"></div>
+</div>
+<!-- <div class="top"><span>+ 数据操作语言(DML)and数据定义语言(DDL)</span></div> 
+<div class="menulist" style="display:block;">
+	<p>查询和更新指令构成了 SQL 的 DML 部分：</p>
+	<ul>
+		<li>SELECT - 从数据库表中获取数据</li>
+		<li>UPDATE - 更新数据库表中的数据</li>
+		<li>DELETE - 从数据库表中删除数据</li>
+		<li>INSERT INTO - 向数据库表中插入数据</li>
+	</ul>
+	<p>SQL 中最重要的 DDL 语句:</p>
+	<ul>
+		<li>CREATE DATABASE - 创建新数据库</li>
+		<li>ALTER DATABASE - 修改数据库</li>
+		<li>CREATE TABLE - 创建新表</li>
+		<li>ALTER TABLE - 变更（改变）数据库表</li>
+		<li>DROP TABLE - 删除表</li>
+		<li>CREATE INDEX - 创建索引（搜索键）</li>
+		<li>DROP INDEX - 删除索引</li>
+	</ul>
+</div>
+<div class="top"><span>+ SELECT</span></div> 
+<div class="menulist">
+	<p>SELECT 列名称 FROM 表名称</p>
+	<p>SELECT 列名称,列名称 FROM 表名称</p>
+	<p>SELECT * FROM 表名称</p>
+	<p>SELECT DISTINCT 列名称 FROM 表名称</p>
+	<p>SELECT 列名称 FROM 表名称 WHERE 列 运算符 值
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BETWEEN：在某个范围内;
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIKE：搜索某种模式;</p>
+	<P>结合 AND 和 OR 运算符
+	<br>SELECT * FROM Persons WHERE (FirstName='Thomas' OR FirstName='William')
+	AND LastName='Carter'</p>
+	<p>ORDER BY 和 DESC ASC
+	<br>SELECT Company, OrderNumber FROM Orders ORDER BY Company DESC, OrderNumber ASC
+	</p>
+</div>
+<div class="top"><span>+ INSERT INTO</span></div> 
+<div class="menulist">
+	<p>插入新的行
+	<br>INSERT INTO 表名称 VALUES (值1, 值2,....)
+	<br>在指定的列中插入数据
+	<br>INSERT INTO table_name (列1, 列2,...) VALUES (值1, 值2,....)
+	</p>
+</div>
+<div class="top"><span>+ UPDATE</span></div> 
+<div class="menulist">
+	<p>UPDATE 表名称 SET 列名称1 = 新值 , 列名称2 = 新值 WHERE 列名称 = 某值
+	</p>
+</div>
+<div class="top"><span>+ DELETE</span></div> 
+<div class="menulist">
+	<p>删除某行	
+	<br>DELETE FROM 表名称 WHERE 列名称 = 值
+	<br>删除所有行
+	<br>DELETE FROM table_name 或者 DELETE * FROM table_name
+	</p>
+</div> -->
+
+</body>
+</html>
