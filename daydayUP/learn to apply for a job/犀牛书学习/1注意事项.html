@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>1注意事项</title>
+<style type="text/css">
+.ul1{line-height:150%}
+.ul1 li{margin-bottom:8px}
+</style>
+<script>
+</script>
+</head>
+<body>
+<h1 align="center">1. JavaScript注意事项</h1>
+<hr />
+<h3 align="center">犀牛书</h3>
+<br>
+<ul class="ul1">
+	<li>JavaScript区分大小写，而HTML并不区分大小写，并且XHTML区分大小写</li>
+	<li>从技术上讲，只有JavaScript对象才能拥有方法。然而，数字、字符串和布尔值也可以拥有自己的方法。在JavaScript中，只有null和undefined是无法拥有方法的值</li>
+	<li>JavaScript不区分整数值和浮点数值。所有数字均用浮点数值表示。采用IEEE754标准定义的64位浮点格式表示数字，即数字最大值是&plusmn;1.7976931348623157x10^308，最小值是&plusmn;5x10^-324。整数范围是-2^53~2^53，包含边界值。</li>
+	<li>在ECMAScript6的严格模式下，八进制直接量是明令禁止的</li>
+	<li>JavaScript中的算术运算在溢出(overflow)、下溢(underflow)或被0整除时不会报错。
+	<ul>
+		<li>运算结果overflow时，显示Infinity（无穷大）或-Infinity（负无穷大）。</li>
+		<li>运算结果underflow时，JavaScript将会返回0，当underflow是负数时，返回“负零”</li>
+		<li>被0整除时，返回Infinity或-Infinity。当0/0时，返回NaN。同时返回NaN的情况还有：1、无穷大除以无穷大；2、负数开方；3、算术运算符用于非数字</li>
+	</ul>
+	</li>
+	<li>NaN定义为一个和任何数都不等的数，所以NaN和自身也不相等：NaN==NaN为flase。所以，不能使用x==NaN来判断x是否为NaN，而应该用x!=x来判断</li>
+	<li>JavaScript中有isFinite()，在参数不是NaN、Infinity、-Infinity时返回true</li>
+	<li>0===-0返回true</li>
+	<li>同样的，IEEE754标准无法精确表示0.1之类的，在计算中这种误差很小，但是在进行比较时就会出问题。</li>
+	<li>字符串可以用''或者""括起来。空字符串长度为0</li>
+	<li>字符串直接量可以拆分成数行，每行以反斜线(\)结束。字符串可以用转义字符\n换行。</li>
+	<li>在HTML中最好这样：&lt;button onclick="alert('OK')"&gt;&lt;/button&gt;</li>
+	<li>以下会被转换成false：undefined、null、0、-0、NaN、""</li>
+	<li>null==undefined true; null===undefined false</li>
+</ul>
+<p style="line-height:150%;text-indent:2em">
+
+</p>
+</body>
+</html>
